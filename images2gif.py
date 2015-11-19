@@ -256,8 +256,14 @@ class GifWriter:
         user, the values are checked. Otherwise the subrectangles are
         calculated automatically.
         
-        """ 
-        image_info = [im.flags for im in images ]
+        """
+
+        image_info = []
+
+        for im in images:
+            if hasattr(im, 'flags'):
+                image_info.append(im.flags)
+
         if isinstance(subRectangles, (tuple,list)):
             # xy given directly
             
